@@ -1,8 +1,25 @@
--- 1. Buat database
+# 📚 PUSTAKA DIGITAL - Database Setup
+
+## Database Structure for Library Management System
+
+---
+
+## 📋 Prerequisites
+
+- MySQL / MariaDB Server
+- phpMyAdmin (optional but recommended)
+- XAMPP / WAMP / LAMP (for local development)
+
+---
+
+## 🗄️ Complete Database Setup
+
+### Step 1: Create Database
+
+```sql
 CREATE DATABASE IF NOT EXISTS db_pustaka_digital;
 USE db_pustaka_digital;
 
--- 2. Tabel buku
 CREATE TABLE `buku` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `kode_buku` varchar(20) NOT NULL,
@@ -15,7 +32,6 @@ CREATE TABLE `buku` (
   UNIQUE KEY `kode_buku` (`kode_buku`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- 3. Tabel peminjaman
 CREATE TABLE `peminjaman` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `kode_peminjaman` varchar(30) NOT NULL,
@@ -32,7 +48,6 @@ CREATE TABLE `peminjaman` (
   CONSTRAINT `peminjaman_ibfk_1` FOREIGN KEY (`id_buku`) REFERENCES `buku` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- 4. Tabel users (pakai ini, lebih lengkap)
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL,
@@ -43,11 +58,6 @@ CREATE TABLE `users` (
   UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- 5. (Opsional) Hapus tabel user lama kalau ada
--- DROP TABLE IF EXISTS `user`;
-
-
--- 6. Data buku
 INSERT INTO `buku` (`kode_buku`, `judul_buku`, `pengarang`, `kategori`, `stok`) VALUES
 ('BK001', 'Laskar Pelangi', 'Andrea Hirata', 'Fiksi,Petualangan', 9),
 ('BK002', 'Bumi', 'Tere Liye', 'Fiksi,Sains', 3),
@@ -55,12 +65,10 @@ INSERT INTO `buku` (`kode_buku`, `judul_buku`, `pengarang`, `kategori`, `stok`) 
 ('BK004', 'Pulang', 'Tere Liye', 'Fiksi,Drama', 5),
 ('BK005', 'Negeri 5 Menara', 'A.Fuadi', 'Fiksi,Inspirasi', 7);
 
--- 7. Data users
 INSERT INTO `users` (`username`, `password`, `role`) VALUES
 ('admin', 'admin123', 'admin'),
 ('petugas', 'petugas123', 'petugas');
 
--- 8. Data peminjaman (contoh)
 INSERT INTO `peminjaman` (`kode_peminjaman`, `nama_peminjam`, `id_buku`, `judul_buku`, `tanggal_peminjaman`, `tanggal_pengembalian`, `status`) VALUES
 ('PJM001', 'Ahmad Wijaya', 1, 'Laskar Pelangi', '2026-05-10', '2026-05-17', 'Dipinjam'),
 ('PJM002', 'Veronika', 1, 'Laskar Pelangi', '2026-05-13', '2026-05-18', 'Dipinjam');
