@@ -1,10 +1,10 @@
 # 📚 PUSTAKA DIGITAL - Database Setup 
 
 ## UNTUK CLEAR TERMINAL DAN CEK GIT
-Get-ChildItem -Force
-Remove-Item .git -Recurse -Force
-git status
-Remove-Item (Get-PSReadLineOption).HistorySavePath
+- Get-ChildItem -Force
+- Remove-Item .git -Recurse -Force
+- git status
+- Remove-Item (Get-PSReadLineOption).HistorySavePath
 
 ## Database Structure for Library Management System
 
